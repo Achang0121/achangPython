@@ -1,0 +1,63 @@
+<!--
+{% if course.unique %}
+    <p> course {{ course.name }} is unique </p>
+{% elif course.has_tag %}
+    {% for tag in course.tags %}
+        <span> {{ tag }} </span>
+    {% endfor %}
+{% else %}
+    <p> course {{ course.name }} is not unique and it don't have tags </p>
+{% endif %}
+-->
+
+<!--
+<p>python: {{ course.python }}</p>
+<p>java: {{ course.java }}</p>
+<p>bigdata: {{ course.bigdata }}</p>
+<p>teacher: {{ course.teacher }}</p>
+<p>tags: {{course.tags}}</p>
+
+
+{% for tag in course.tags %}
+    <span>{{ tag }}</span>
+{% endfor %}-->
+
+
+
+<!--宏的定义（相当于python中的函数）-->
+<!--
+{% macro course_item(course, type="bootstrap") %}
+    <div>
+        <p> type: {{ type }}</p>
+        <p> name: {{ course.name }}</p>
+        <p> user count: {{ course.user_count }}</p>
+        <p> teacher: {{ course.teacher }}</p>
+        <p> is_private: {{ course.is_private }}</p>
+    </div>
+{% endmacro %}
+
+宏的调用
+<div>{{ course_item(course) }}</div>
+<p>{{ '=' * 20 }}</p>
+<div> {{ course_item(course, type="louplus")}} </div>-->
+
+<!--
+{% from 'macro.html' import course_tag %}
+<div>{{course_tag(course)}}</div>
+-->
+
+{% extends 'base.html' %}
+{% from 'macro.html' import course_tag %}
+
+{% block header %}
+    <h1>shiyanlou</h1>
+{% endblock %}
+
+{% block content %}
+    {{course_tag(course)}}
+{% endblock %}
+
+
+{% block footer %}
+    <a href="{{ url_for('course', name='python')}}"> courses </a>
+{% endblock %}
