@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A simple imformation website</title>
+</head>
+<body>
+    <div class="container">
+       
+        {% block title %}
+            <h2>标题</h2>
+        {% endblock %}
+        
+        {% block content %}
+            <p>内容部分</p>
+        {% endblock %}
+        
+        {% block footer %}
+            <footer>
+                <p>&copy;Copyright by Achang0121 &times;</p>
+            </footer>
+        {% endblock %}
+    </div>
+</body>
+</html>

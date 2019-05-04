@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+<!--设置首页标题-->
+{% block title %}
+    <h2>Index</h2>
+{% endblock %}
+
+
+{% block content %}
+    <ul>
+        {% for title in title_list %}
+            <li>{{title}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
