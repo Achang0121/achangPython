@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+
 
 # 注意这里不再传入 app 了
 db = SQLAlchemy()
@@ -16,7 +18,7 @@ class Base(db.Model):
                           onupdate=datetime.utcnow)
 
     
-class User(Base):
+class User(Base, UserMixin):
     __tablename__ = 'user'
     # 用数值表示角色， 方便判断是否有权限，比如说有个操作要角色是员工
     # 及以上的用户才可以做，那么只要判断 user.role >= ROLE_SATFF

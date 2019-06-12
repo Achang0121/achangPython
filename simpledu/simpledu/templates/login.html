@@ -1,37 +1,11 @@
 {% extends "base.html" %}
-
+{% from "macros.html" import render_form %}
 
 {% block title %} Login {% endblock %}
 
 {% block body %}
-<h2>登录</h2>
 <div class="form">
-    <!--要在 form 里指定 POST 方法和点击提交后需要请求的 url-->
-    <form method="post" action="{{ url_for('front.login') }}">
-    <!--    flask-wtf 帮我们在表单中添加了 csrf_token, 我们只需要简单的渲染就可以，渲染后会在html页面生成一个隐藏域，里面是 csrf_token 值-->
-        {{ form.csrf_token}}
-
-        <!--使用Bootstrap 的表单样式渲染每个表单项-->
-        <div class="form-group">
-            <!--首先渲染 field label-->
-            <!--接着渲染 field，StringField 渲染后会生成一个 <input>标签，field里可以传入 html的标签属性-->
-            {{ form.email.label }} {{ form.email(class='form-control') }}
-        </div>
-
-        <div class="form-group">
-            {{ form.password.label }} {{ form.password(class='form-control') }}
-        </div>
-
-        <div class="checkbox">
-            <label>
-                {{ form.remember_me() }}
-                <!--获取label的text属性，也就所在表单定义的‘记住我’-->
-                {{ form.remember_me.label.text }}
-            </label>
-        </div>
-        <!--渲染提交按钮，传入 Bootstrap 的按钮类-->
-        {{ form.submit(class='btn btn-primary') }}
-    </form>
+    <h2>登录</h2>
+    {{ render_form(form, url_for('front.login')) }}
 </div>
-
 {% endblock %}
