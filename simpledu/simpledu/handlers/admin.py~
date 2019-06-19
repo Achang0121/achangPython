@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, current_app, redirect, url_for, flash
 from simpledu.decorators import admin_required
-from simpledu.models import db, Course, User, Live
+from simpledu.models import db, Course, User
 from simpledu.forms import CourseForm, RegisterForm, LiveForm
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
